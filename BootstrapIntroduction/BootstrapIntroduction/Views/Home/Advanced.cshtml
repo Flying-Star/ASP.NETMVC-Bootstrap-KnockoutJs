@@ -1,0 +1,22 @@
+﻿@model BootstrapIntroduction.Models.Person
+@{
+    ViewBag.Title = "Advanced";
+}
+@*第一步：用span标签绑定数据*@
+<h2>人物：<span data-bind="text: getName()"></span></h2>
+@*第二步：利用ViewModel绑定HTML上的变量和函数*@
+@section Scripts{
+    <script>
+        function ViewModel(firstName, lastName) {
+            var self = this;
+            self.name = firstName + '' + lastName;
+
+            self.getName = function () {
+                return self.name;
+            };
+        };
+        //第三步：利用ko.applyBindings()调用刚刚创建的viewModel
+        var viewModel = new ViewModel('@Model.FirstName', '@Model.LastName');
+        ko.applyBindings(viewModel);
+    </script>
+}

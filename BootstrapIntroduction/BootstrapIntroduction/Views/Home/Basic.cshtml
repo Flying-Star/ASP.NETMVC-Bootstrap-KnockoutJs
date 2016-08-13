@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Basic";
+}
+
+<h2>示例：<span data-bind="text: name"></span></h2>
+<input id="demoId" type="text" name="name" value="乔峰降龙十八掌"/>
+@section Scripts{
+    <script>
+        var name = document.getElementById("demoId").value;
+        var viewModel = {
+            name: name
+        };
+        
+        ko.applyBindings(viewModel);
+    </script>
+}
+
